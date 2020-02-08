@@ -12,6 +12,8 @@
 		02A5980623EF55B100E29F59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A5980423EF55B100E29F59 /* Main.storyboard */; };
 		02A5980823EF55B200E29F59 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A5980723EF55B200E29F59 /* Assets.xcassets */; };
 		02A5980B23EF55B200E29F59 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A5980923EF55B200E29F59 /* LaunchScreen.storyboard */; };
+		02A5981423EF68BA00E29F59 /* star-filled.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A5981223EF68BA00E29F59 /* star-filled.png */; };
+		02A5981523EF68BA00E29F59 /* star-empty.png in Resources */ = {isa = PBXBuildFile; fileRef = 02A5981323EF68BA00E29F59 /* star-empty.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		02A5980723EF55B200E29F59 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		02A5980A23EF55B200E29F59 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		02A5980C23EF55B200E29F59 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		02A5981223EF68BA00E29F59 /* star-filled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-filled.png"; sourceTree = "<group>"; };
+		02A5981323EF68BA00E29F59 /* star-empty.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "star-empty.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 				02A5980223EF55B100E29F59 /* MapViewController.swift */,
 				02A5980423EF55B100E29F59 /* Main.storyboard */,
 				02A5980723EF55B200E29F59 /* Assets.xcassets */,
+				02A5981323EF68BA00E29F59 /* star-empty.png */,
+				02A5981223EF68BA00E29F59 /* star-filled.png */,
 				02A5980923EF55B200E29F59 /* LaunchScreen.storyboard */,
 				02A5980C23EF55B200E29F59 /* Info.plist */,
 			);
@@ -123,6 +129,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				02A5980B23EF55B200E29F59 /* LaunchScreen.storyboard in Resources */,
+				02A5981423EF68BA00E29F59 /* star-filled.png in Resources */,
+				02A5981523EF68BA00E29F59 /* star-empty.png in Resources */,
 				02A5980823EF55B200E29F59 /* Assets.xcassets in Resources */,
 				02A5980623EF55B100E29F59 /* Main.storyboard in Resources */,
 			);
@@ -284,6 +292,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "assignment 5/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,6 +310,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "assignment 5/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
