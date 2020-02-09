@@ -55,17 +55,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let annotation = Place(name: (place["name"] as! String), longDescription: (place["description"] as! String), coord: coord)
             mapView.addAnnotation(annotation)
         }
-            
-        //print(arr)
-        
-        /*
-        for place in arr {
-            print(place)
-            
-         
-         
- 
-        }*/
     }
 }
 
