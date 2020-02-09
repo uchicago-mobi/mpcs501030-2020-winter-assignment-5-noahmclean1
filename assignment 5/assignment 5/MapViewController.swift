@@ -21,6 +21,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        DataManager.sharedInstance.loadAnnotationFromPlist()
+        
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.8786, longitude: -87.6251), latitudinalMeters: 40000.0, longitudinalMeters: 40000.0)
         mapView.setRegion(region, animated: true)
         
@@ -46,22 +48,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func addAllPoints() {
         
-        var ndict: NSDictionary?
-        if let path = Bundle.main.path(forResource: "Data", ofType: "plist") {
-            ndict = NSDictionary(contentsOfFile: path)
-            
-            let places = ndict!["places"] as! [[String:Any]]
-            
-            for place in places{
-                let coord = CLLocationCoordinate2DMake(place["lat"] as! Double, place["long"] as! Double)
-                let annotation = Place(name: (place["name"] as! String), longDescription: (place["description"] as! String), coord: coord)
-                mapView.addAnnotation(annotation)
-            }
-        } else {
-            print("Failed to load plist data of locations")
+        let arr = UserDefaults.standard.object(forKey: "places") as! [[String: Any]]
+        
+        for place in arr{
+            let coord = CLLocationCoordinate2DMake(place["lat"] as! Double, place["long"] as! Double)
+            let annotation = Place(name: (place["name"] as! String), longDescription: (place["description"] as! String), coord: coord)
+            mapView.addAnnotation(annotation)
         }
+            
+        //print(arr)
         
-        
+        /*
+        for place in arr {
+            print(place)
+            
+         
+         
+ 
+        }*/
     }
 }
 

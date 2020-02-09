@@ -10,6 +10,7 @@
 		0261C0BC23F08AB200771A1F /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0261C0BB23F08AB200771A1F /* Data.plist */; };
 		0261C0BE23F08CF400771A1F /* map-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = 0261C0BD23F08CF400771A1F /* map-pin.png */; };
 		0261C0C023F08F4100771A1F /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0261C0BF23F08F4100771A1F /* FavoritesViewController.swift */; };
+		0261C0C223F0AE2C00771A1F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0261C0C123F0AE2C00771A1F /* DataManager.swift */; };
 		02A5980123EF55B100E29F59 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5980023EF55B100E29F59 /* AppDelegate.swift */; };
 		02A5980323EF55B100E29F59 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A5980223EF55B100E29F59 /* MapViewController.swift */; };
 		02A5980623EF55B100E29F59 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A5980423EF55B100E29F59 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 		0261C0BB23F08AB200771A1F /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
 		0261C0BD23F08CF400771A1F /* map-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-pin.png"; sourceTree = "<group>"; };
 		0261C0BF23F08F4100771A1F /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		0261C0C123F0AE2C00771A1F /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		02A597FD23EF55B100E29F59 /* assignment 5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "assignment 5.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A5980023EF55B100E29F59 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02A5980223EF55B100E29F59 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				02A5980023EF55B100E29F59 /* AppDelegate.swift */,
 				02A5980223EF55B100E29F59 /* MapViewController.swift */,
 				0261C0BF23F08F4100771A1F /* FavoritesViewController.swift */,
+				0261C0C123F0AE2C00771A1F /* DataManager.swift */,
 				02A5980423EF55B100E29F59 /* Main.storyboard */,
 				02A5980723EF55B200E29F59 /* Assets.xcassets */,
 				02A5981323EF68BA00E29F59 /* star-empty.png */,
@@ -155,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				02A5980323EF55B100E29F59 /* MapViewController.swift in Sources */,
+				0261C0C223F0AE2C00771A1F /* DataManager.swift in Sources */,
 				0261C0C023F08F4100771A1F /* FavoritesViewController.swift in Sources */,
 				02A5980123EF55B100E29F59 /* AppDelegate.swift in Sources */,
 			);
