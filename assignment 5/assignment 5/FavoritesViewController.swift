@@ -22,8 +22,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         faveTable.reloadData()
-        
     }
     
     @IBAction func dismissPopover(_ sender: Any) {

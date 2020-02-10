@@ -108,9 +108,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
 extension MapViewController: PlacesFavoritesDelegate {
     func favoritePlace(name: String) {
-        print(name)
         if let place = DataManager.sharedInstance.getFavorite(name: name) {
-            print(place.coordinate)
             let region = MKCoordinateRegion(center: place.coordinate, latitudinalMeters: 4000.0, longitudinalMeters: 4000.0)
             mapView.setRegion(region, animated: true)
         }
