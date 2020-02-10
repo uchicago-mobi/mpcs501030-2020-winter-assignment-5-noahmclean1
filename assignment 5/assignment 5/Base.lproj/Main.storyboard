@@ -64,7 +64,7 @@
                                     <color key="titleColor" red="1" green="0.94969394392678808" blue="0.228024658262998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="sVg-aY-fLZ" kind="popoverPresentation" popoverAnchorView="niZ-Bv-Dpm" id="MRK-xP-fkL">
+                                    <segue destination="sVg-aY-fLZ" kind="popoverPresentation" identifier="btnPress" popoverAnchorView="niZ-Bv-Dpm" id="MRK-xP-fkL">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>

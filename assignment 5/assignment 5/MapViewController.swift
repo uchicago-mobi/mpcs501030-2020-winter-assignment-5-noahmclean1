@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
-
+  
     @IBOutlet weak var mapView: MKMapView! {
         didSet { mapView.delegate = self}
     }
@@ -95,6 +95,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let annotation = Place(name: (place["name"] as! String), longDescription: (place["description"] as! String), coord: coord)
             mapView.addAnnotation(annotation)
             
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "btnPress" {
+            let favVC = segue.destination as! FavoritesViewController
+            favVC.delegate = self
+        }
+    }
+}
+
+extension MapViewController: PlacesFavoritesDelegate {
+    func favoritePlace(name: String) {
+        print(name)
+        if let place = DataManager.sharedInstance.getFavorite(name: name) {
+            print(place.coordinate)
+            let region = MKCoordinateRegion(center: place.coordinate, latitudinalMeters: 4000.0, longitudinalMeters: 4000.0)
+            mapView.setRegion(region, animated: true)
         }
     }
 }

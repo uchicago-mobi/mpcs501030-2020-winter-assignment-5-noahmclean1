@@ -53,4 +53,13 @@ public class DataManager {
     func addFavorite(place: Place) {
         favorites.append(place)
     }
+    
+    func getFavorite(name: String) -> Place? {
+        for place in favorites {
+            if place.name! == name {
+                return place
+            }
+        }
+        return nil
+    }
 }

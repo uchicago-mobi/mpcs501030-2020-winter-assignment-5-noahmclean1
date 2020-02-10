@@ -11,10 +11,10 @@ import UIKit
 class FavoritesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var faveTable: UITableView!
+    weak var delegate: PlacesFavoritesDelegate?
     let favorites = DataManager.sharedInstance.favorites
     
     //MARK: - Initialization
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         faveTable.delegate = self
@@ -37,7 +37,12 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // cell selected code here
+        if let cell = tableView.cellForRow(at: indexPath) {
+            if let text = cell.textLabel?.text {
+                delegate?.favoritePlace(name: text)
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -46,3 +51,8 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell
     }
 }
+
+protocol PlacesFavoritesDelegate: class {
+    func favoritePlace(name: String) -> Void
+}
+
