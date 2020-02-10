@@ -15,6 +15,8 @@ public class DataManager {
     
     fileprivate init() {}
     
+    var favorites = [Place]()
+    
     // MARK: - Usable data functions
     
     func loadAnnotationFromPlist() {
@@ -35,15 +37,20 @@ public class DataManager {
     }
     
     func saveFavorites() {
+        let defaults = UserDefaults.standard
         
+        defaults.set(favorites, forKey: "faves")
     }
     
-    func deleteFavorite() {
-        
+    func deleteFavorite(name: String) {
+        favorites = favorites.filter(){$0.name != name}
     }
     
     func listFavorites() {
         
     }
     
+    func addFavorite(place: Place) {
+        favorites.append(place)
+    }
 }

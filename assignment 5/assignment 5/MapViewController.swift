@@ -15,6 +15,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         didSet { mapView.delegate = self}
     }
     @IBOutlet weak var favoriteBtn: UIButton!
+    @IBOutlet weak var locTitle: UILabel!
+    @IBOutlet weak var locDescrip: UILabel!
     
     // MARK: - Initialization Funcs
     
@@ -36,9 +38,32 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.showsCompass = false
         mapView.showsPointsOfInterest = false
         
-        
-        // TODO add import points from plist
+        // Add all important points from the loaded plist
         addAllPoints()
+    }
+    
+    // MARK: - Interactions
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let place = view.annotation as? Place {
+            locTitle.text = place.name
+            locDescrip.text = place.longDescription
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if let place = annotation as? Place {
+            var placeView: PlaceMarkerView
+            
+            placeView = PlaceMarkerView(annotation: place, reuseIdentifier: "Pin")
+            placeView.canShowCallout = true
+            placeView.calloutOffset = CGPoint(x: -5, y: 5)
+            placeView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            placeView.markerTintColor = .blue
+            
+            return placeView
+        }
+        return nil
     }
     
     @IBAction func addFavoritePlace(_ sender: Any) {
@@ -54,6 +79,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             let coord = CLLocationCoordinate2DMake(place["lat"] as! Double, place["long"] as! Double)
             let annotation = Place(name: (place["name"] as! String), longDescription: (place["description"] as! String), coord: coord)
             mapView.addAnnotation(annotation)
+            
         }
     }
 }
@@ -78,10 +104,9 @@ class PlaceMarkerView: MKMarkerAnnotationView {
         willSet {
             clusteringIdentifier = "Place"
             displayPriority = .defaultLow
-            //markerTintColor = .systemRed
+            markerTintColor = .red
             glyphImage = UIImage(named: "map-pin")
         }
     }
-    
     
 }
