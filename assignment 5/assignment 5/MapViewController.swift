@@ -17,6 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var favoriteBtn: UIButton!
     @IBOutlet weak var locTitle: UILabel!
     @IBOutlet weak var locDescrip: UILabel!
+    var currentPlace: Place?
     
     // MARK: - Initialization Funcs
     
@@ -30,6 +31,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         favoriteBtn.setImage(UIImage(named: "star-empty"), for: .normal)
         favoriteBtn.setImage(UIImage(named: "star-filled"), for: .selected)
+        
+        // Add all important points from the loaded plist
+        addAllPoints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,8 +42,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.showsCompass = false
         mapView.showsPointsOfInterest = false
         
-        // Add all important points from the loaded plist
-        addAllPoints()
+        
     }
     
     // MARK: - Interactions
@@ -48,6 +51,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if let place = view.annotation as? Place {
             locTitle.text = place.name
             locDescrip.text = place.longDescription
+            currentPlace = place
+            favoriteBtn.isSelected = place.isFave
         }
     }
     
@@ -66,9 +71,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return nil
     }
     
-    @IBAction func addFavoritePlace(_ sender: Any) {
-        // TODO actually add the place to favorites
-        favoriteBtn.isSelected = !favoriteBtn.isSelected
+    @IBAction func changeFavoritePlace(_ sender: Any) {
+        // Make sure there is actually a place selected to do something
+        if let realPlace = currentPlace {
+            realPlace.isFave = !realPlace.isFave
+            favoriteBtn.isSelected = realPlace.isFave
+            if realPlace.isFave {
+                DataManager.sharedInstance.addFavorite(place: realPlace)
+            }
+            else {
+                DataManager.sharedInstance.deleteFavorite(name: realPlace.name!)
+            }
+            //DataManager.sharedInstance.listFavorites()
+        }
     }
     
     func addAllPoints() {
@@ -89,6 +104,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 class Place: MKPointAnnotation {
     var name: String?
     var longDescription: String?
+    var isFave = false
     
     init(name: String?, longDescription: String?, coord: CLLocationCoordinate2D) {
         super.init()

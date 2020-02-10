@@ -47,7 +47,7 @@ public class DataManager {
     }
     
     func listFavorites() {
-        
+        print(favorites)
     }
     
     func addFavorite(place: Place) {
