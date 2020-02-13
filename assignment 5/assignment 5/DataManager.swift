@@ -22,11 +22,13 @@ public class DataManager {
     func loadAnnotationFromPlist() {
         var ndict: NSDictionary?
         let defaults = UserDefaults.standard
+        var places = [[String:Any]]()
+        
         
         if let path = Bundle.main.path(forResource: "Data", ofType: "plist") {
             ndict = NSDictionary(contentsOfFile: path)
             
-            let places = ndict!["places"] as! [[String:Any]]
+            places = ndict!["places"] as! [[String:Any]]
             defaults.set(places, forKey: "places")
             
             
@@ -35,16 +37,25 @@ public class DataManager {
             print("Failed to load plist data of locations")
         }
         
-        // Try to load in previous favorites
-        if let faves = defaults.object(forKey: "faves") as? [Place] {
-            favorites = faves
-        }
+        
     }
     
     func saveFavorites() {
         let defaults = UserDefaults.standard
         
-        defaults.set(favorites, forKey: "faves")
+        var newlist = [[String : Any]]()
+        
+        for place in favorites {
+            let placeD = [
+                "name" : place.name!,
+                "longDescription" : place.longDescription!,
+                "coordlat": place.coordinate.latitude,
+                "coordlon": place.coordinate.longitude
+                ] as [String : Any]
+            newlist.append(placeD)
+        }
+        
+        defaults.set(newlist, forKey: "faves")
     }
     
     func deleteFavorite(name: String) {

@@ -24,6 +24,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Reads in the plist + other stuff (see DataManager for more info)
         DataManager.sharedInstance.loadAnnotationFromPlist()
         
         let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 41.8786, longitude: -87.6251), latitudinalMeters: 40000.0, longitudinalMeters: 40000.0)
@@ -60,11 +61,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if let place = annotation as? Place {
             var placeView: PlaceMarkerView
             
+            // Format and add annotation views for each Place
             placeView = PlaceMarkerView(annotation: place, reuseIdentifier: "Pin")
             placeView.canShowCallout = true
             placeView.calloutOffset = CGPoint(x: -5, y: 5)
             placeView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            //placeView.markerTintColor = .blue
             
             return placeView
         }
@@ -72,7 +73,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func changeFavoritePlace(_ sender: Any) {
-        // Make sure there is actually a place selected to do something
+        // Make sure there is actually a Place selected to do something
         if let realPlace = currentPlace {
             realPlace.isFave = !realPlace.isFave
             favoriteBtn.isSelected = realPlace.isFave
@@ -82,22 +83,38 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             else {
                 DataManager.sharedInstance.deleteFavorite(name: realPlace.name!)
             }
-            //DataManager.sharedInstance.listFavorites()
         }
     }
     
     func addAllPoints() {
         
         let arr = UserDefaults.standard.object(forKey: "places") as! [[String: Any]]
+        var places = [Place]()
         
+        // Turn the plist into our Place objects
         for place in arr{
             let coord = CLLocationCoordinate2DMake(place["lat"] as! Double, place["long"] as! Double)
             let annotation = Place(name: (place["name"] as! String), longDescription: (place["description"] as! String), coord: coord)
+            places.append(annotation)
             mapView.addAnnotation(annotation)
             
         }
+        
+        // Try to load in previous favorites
+        if DataManager.sharedInstance.favorites.isEmpty, let faves = UserDefaults.standard.object(forKey: "faves") as? [[String : Any]] {
+            for fav in faves {
+                for place in places {
+                    if place.name == fav["name"] as? String {
+                        place.isFave = true
+                        DataManager.sharedInstance.addFavorite(place: place)
+                    }
+                }
+                
+            }
+        }
     }
     
+    // Make sure the delegate for information passing is set (a bit extra but not sure how else to do this)
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "btnPress" {
             let favVC = segue.destination as! FavoritesViewController
@@ -106,6 +123,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
 }
 
+// Allow passing data/action from the Favorites TableView
 extension MapViewController: PlacesFavoritesDelegate {
     func favoritePlace(name: String) {
         if let place = DataManager.sharedInstance.getFavorite(name: name) {
@@ -118,6 +136,8 @@ extension MapViewController: PlacesFavoritesDelegate {
 // MARK: - MapKit Subclasses
 
 class Place: MKPointAnnotation {
+   
+    
     var name: String?
     var longDescription: String?
     var isFave = false

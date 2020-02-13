@@ -36,6 +36,7 @@ class FavoritesViewController: UIViewController, UITableViewDelegate, UITableVie
         return favorites.count
     }
     
+    // Function to "fly-to" Place
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) {
             if let text = cell.textLabel?.text {
