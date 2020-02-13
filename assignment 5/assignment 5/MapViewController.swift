@@ -64,7 +64,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             placeView.canShowCallout = true
             placeView.calloutOffset = CGPoint(x: -5, y: 5)
             placeView.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-            placeView.markerTintColor = .blue
+            //placeView.markerTintColor = .blue
             
             return placeView
         }

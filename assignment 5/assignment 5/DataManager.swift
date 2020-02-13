@@ -34,6 +34,11 @@ public class DataManager {
          else {
             print("Failed to load plist data of locations")
         }
+        
+        // Try to load in previous favorites
+        if let faves = defaults.object(forKey: "faves") as? [Place] {
+            favorites = faves
+        }
     }
     
     func saveFavorites() {

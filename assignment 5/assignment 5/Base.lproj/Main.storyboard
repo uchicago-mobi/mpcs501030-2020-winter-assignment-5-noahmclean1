@@ -131,26 +131,25 @@
             <objects>
                 <viewController id="sVg-aY-fLZ" customClass="FavoritesViewController" customModule="assignment_5" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JAB-QV-uzb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="394"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="394"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TXJ-xn-ae3">
-                                <rect key="frame" x="0.0" y="50" width="414" height="344"/>
+                                <rect key="frame" x="44" y="50" width="808" height="344"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="ERX-Ov-6u3">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="808" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ERX-Ov-6u3" id="zKB-nL-myg">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="808" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6KF-E6-EdQ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6KF-E6-EdQ">
+                                <rect key="frame" x="0.0" y="0.0" width="896" height="54"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWo-yT-oTh">
                                         <rect key="frame" x="8" y="13" width="30" height="41"/>
@@ -165,24 +164,35 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="ocQ-LU-cLq"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="TXJ-xn-ae3" firstAttribute="trailing" secondItem="YPh-DB-l1q" secondAttribute="trailing" id="4as-cN-8w6"/>
                             <constraint firstItem="TXJ-xn-ae3" firstAttribute="leading" secondItem="YPh-DB-l1q" secondAttribute="leading" id="4nq-Nc-64X"/>
                             <constraint firstAttribute="bottom" secondItem="TXJ-xn-ae3" secondAttribute="bottom" id="6FV-1Y-5DA"/>
+                            <constraint firstItem="6KF-E6-EdQ" firstAttribute="leading" secondItem="JAB-QV-uzb" secondAttribute="leading" id="Dcd-Tf-WAg"/>
+                            <constraint firstItem="6KF-E6-EdQ" firstAttribute="top" secondItem="YPh-DB-l1q" secondAttribute="top" id="jN9-CC-R7b"/>
+                            <constraint firstItem="TXJ-xn-ae3" firstAttribute="centerX" secondItem="YPh-DB-l1q" secondAttribute="centerX" id="mix-zY-OWj"/>
                             <constraint firstItem="TXJ-xn-ae3" firstAttribute="top" secondItem="YPh-DB-l1q" secondAttribute="top" constant="50" id="mmi-XT-WUU"/>
-                            <constraint firstItem="TXJ-xn-ae3" firstAttribute="trailing" secondItem="YPh-DB-l1q" secondAttribute="trailing" id="pkG-bZ-hWF"/>
+                            <constraint firstAttribute="trailing" secondItem="6KF-E6-EdQ" secondAttribute="trailing" id="uze-04-urr">
+                                <variation key="heightClass=compact-widthClass=regular" constant="0.0"/>
+                            </constraint>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YPh-DB-l1q"/>
                     </view>
+                    <value key="contentSizeForViewInPopover" type="size" width="896" height="394"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="faveTable" destination="TXJ-xn-ae3" id="iTI-6D-vJF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4lv-25-EUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1086.9565217391305" y="25.446428571428569"/>
+            <point key="canvasLocation" x="1086.8303571428571" y="24.637681159420293"/>
         </scene>
     </scenes>
     <resources>
